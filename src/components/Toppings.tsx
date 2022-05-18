@@ -1,8 +1,13 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { IPizza } from "../App";
 
-const Toppings = ({ addTopping, pizza }) => {
-  let toppings = [
+interface IProps {
+  addTopping: (topping: string) => void;
+  pizza: IPizza;
+}
+
+const Toppings = ({ addTopping, pizza }: IProps) => {
+  const toppings = [
     "mushrooms",
     "peppers",
     "onions",
@@ -16,7 +21,7 @@ const Toppings = ({ addTopping, pizza }) => {
       <h3>Step 2: Choose Toppings</h3>
       <ul>
         {toppings.map((topping) => {
-          let spanClass = pizza.toppings.includes(topping) ? "active" : "";
+          const spanClass = pizza.toppings.includes(topping) ? "active" : "";
           return (
             <li key={topping} onClick={() => addTopping(topping)}>
               <span className={spanClass}>{topping}</span>

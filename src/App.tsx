@@ -6,23 +6,29 @@ import Base from "./components/Base";
 import Toppings from "./components/Toppings";
 import Order from "./components/Order";
 
-function App() {
-  const [pizza, setPizza] = useState({ base: "", toppings: [] });
+export interface IPizza {
+  base: string;
+  toppings: string[];
+}
 
-  // @ts-ignore
-  const addBase = (base) => {
+function App() {
+  const [pizza, setPizza] = useState<IPizza>({
+    base: "",
+    toppings: [],
+  });
+
+  const addBase = (base: string) => {
     setPizza({ ...pizza, base });
   };
-  // @ts-ignore
-  const addTopping = (topping) => {
+
+  const addTopping = (topping: string) => {
     let newToppings;
-    // @ts-ignore
     if (!pizza.toppings.includes(topping)) {
       newToppings = [...pizza.toppings, topping];
     } else {
       newToppings = pizza.toppings.filter((item) => item !== topping);
     }
-    // @ts-ignore
+
     setPizza({ ...pizza, toppings: newToppings });
   };
 

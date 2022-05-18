@@ -1,6 +1,10 @@
-import React from "react";
+import { IPizza } from "../App";
 
-const Order = ({ pizza }) => {
+interface IProps {
+  pizza: IPizza;
+}
+
+const Order = ({ pizza }: IProps) => {
   return (
     <div className="container order">
       <h2>Thank you for your order :)</h2>
