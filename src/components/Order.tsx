@@ -1,10 +1,11 @@
-import { useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 
 import { IPizza } from "../App";
 
 interface IProps {
   pizza: IPizza;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const containerVariants = {
@@ -40,7 +41,13 @@ const childVariants = {
   },
 };
 
-const Order = ({ pizza }: IProps) => {
+const Order = ({ pizza, setShowModal }: IProps) => {
+  useEffect(() => {
+    setTimeout(() => {
+      setShowModal(true);
+    }, 5000);
+  }, [setShowModal]);
+
   return (
     <motion.div
       className="container order"
