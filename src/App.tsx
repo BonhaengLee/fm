@@ -41,7 +41,10 @@ function App() {
     <>
       <Header />
       <Modal showModal={showModal} setShowModal={setShowModal} />
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence
+        exitBeforeEnter
+        onExitComplete={() => setShowModal(false)}
+      >
         <Routes location={location} key={location.key}>
           <Route path="/" element={<Home />} />
           <Route path="/newTodo" />
